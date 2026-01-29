@@ -160,7 +160,7 @@
         "name": "RESEARCH_AREA_1"
       },
       {
-        "@type": "Thing", 
+        "@type": "Thing",
         "name": "RESEARCH_AREA_2"
       }
     ]
@@ -219,24 +219,105 @@
                 <!-- TODO: Remove this line if no equal contribution -->
                 <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
               </div>
+              <div class="publication-links">
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="static/pdfs/Stable_Covector_Fluids___Submission__Webpage.pdf" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+              </div>
+              <!-- Paper abstract -->
+              <section class="section hero is-light">
+                <div class="container is-max-desktop">
+                  <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                      <h2 class="title is-3">Abstract</h2>
+                      <div class="content has-text-justified">
+                        <!-- TODO: Replace with your paper abstract -->
+                        <p>
+                          We introduce a new advection scheme for grid-based fluid simulation inspired by the recent covector
+                          fluids approach of Nabizadeh et al. 2022. We directly discretize the integral form of the
+                          covector transport equation, which ensures the conservation of line integral over any curve in the
+                          discretized fluid domain. Despite a theoretical argument for unconditional stability in 2D, we observe
+                          that numerical error in backtracing results in limited stability in practice. To address this issue, we
+                          further propose a stabilization heuristic based on the relative change in area of backtraced grid cells.
+                          We extend the heuristic to volume ratios in 3D and show that the proposed method is stable even at
+                          larger timesteps.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- End paper abstract -->
+
 
               <div class="column has-text-centered">
-                <div class="publication-links">
-                  <!-- TODO: Update with your arXiv paper ID -->
-                  <span class="link-block">
-                    <a href="static/pdfs/Stable_Covector_Fluids___Submission__Webpage.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Paper</span>
-                    </a>
-                  </span>
+                  <section class="section">
+                        <div class="container is-max-desktop">
+                          <div class="columns is-centered has-text-centered">
+                            <div class="column is-four-fifths">
+                              <h2 class="title is-3">Method Overview</h2>
+                              <div class="content has-text-justified">
+                                <p>
+                                    We perform advection by computing line integrals over the backtraced dual grid edges.
+                                </p>
+                              </div>
+                              <figure class="image">
+                                <img src="static/images/li-trace.svg" alt="Method Overview Diagram">
+                                <figcaption class="mt-2 has-text-centered is-size-6 has-text-grey">
+                                    Line integral advection ensures that the circulation along the dual
+                                    edge loop is equal to the circulation along the backtraced loop. In an incom-
+                                    pressible 2D fluid, the area enclosed by both loops should also be equal,
+                                    thus the vorticity (i.e. circulation per unit area) should be conserved.
+                                </figcaption>
+                              </figure>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="section">
+                            <div class="container is-max-desktop">
+                              <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+
+                              <div class="columns is-centered">
+                                <div class="column is-four-fifths has-text-centered">
+                                  <figure class="image">
+                                    <img src="static/images/teaser.svg" alt="Comparison: Baseline vs Ours">
+                                    <figcaption>
+                                        An ink drop in the shape of the SIGGRAPH logo sinks under the influence of gravity. For a time step of Δ𝑡 = 0.01 s, our line integral (LI) method gives
+                                       similar visual quality as the covector fluids (CF) method of Nabizadeh et al. [2022]. However, at a larger time step of Δ𝑡 = 0.04 s, CF rapidly becomes unstable
+                                       while LI still gives stable results. Our LI-Trace variant adds a simple heuristic to provide greater stability, in this case eliminating the erroneous increase in
+                                       energy in the basic LI method.
+                                    </figcaption>
+                                  </figure>
+                                </div>
+                              </div>
+                              <!--<div class="columns is-centered mt-5">
+                                <div class="column is-three-quarters has-text-centered">
+                                  <h3 class="title is-4">Energy Conservation</h3>
+                                  <figure class="image">
+                                    <img src="static/images/energy_plot.png" alt="Energy Conservation Plot">
+                                    <figcaption>
+                                      Our method (Blue) maintains energy significantly better than semi-Lagrangian schemes (Red)
+                                      over long simulation times.
+                                    </figcaption>
+                                  </figure>
+                                </div>
+                              </div>-->
+
+                            </div>
+                          </section>
+
 
                   <!-- TODO: Add your supplementary material PDF or remove this section -->
 
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -262,30 +343,6 @@
     </section>
     <!-- End teaser video -->
 
-    <!-- Paper abstract -->
-    <section class="section hero is-light">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Abstract</h2>
-            <div class="content has-text-justified">
-              <!-- TODO: Replace with your paper abstract -->
-              <p>
-                We introduce a new advection scheme for grid-based fluid simulation inspired by the recent covector
-                fluids approach of Nabizadeh et al. 2022. We directly discretize the integral form of the
-                covector transport equation, which ensures the conservation of line integral over any curve in the
-                discretized fluid domain. Despite a theoretical argument for unconditional stability in 2D, we observe
-                that numerical error in backtracing results in limited stability in practice. To address this issue, we
-                further propose a stabilization heuristic based on the relative change in area of backtraced grid cells.
-                We extend the heuristic to volume ratios in 3D and show that the proposed method is stable even at
-                larger timesteps.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End paper abstract -->
 
 
 
